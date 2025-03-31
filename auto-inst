@@ -18,15 +18,23 @@ fi
 
 sudo sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15\nILoveCandy/" /etc/pacman.conf
 
-sudo pacman -S --noconfirm npm pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-media-session \
+sudo pacman -S --noconfirm npm zsh pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-media-session \
     ttf-jetbrains-mono-nerd noto-fonts-emoji noto-fonts-cjk ttf-font-awesome polkit-gnome mpv imv ffmpeg \
     hyprland dunst wofi swaybg grim slurp kitty pamixer brightnessctl waybar xdg-desktop-portal-hyprland \
     cliphist clang bluez bluez-utils pulseaudio-bluetooth gvfs-mtp btop qbittorrent thunar tumbler unzip \
     file-roller android-tools xdg-user-dirs ranger python-pillow firewalld neovim exa ripgrep perl-image-exiftool \
-    duf fzf
+    duf fzf discord visual-studio-code-bin firefox spotify tmux pavucontrol git nodejs python go htop terraform \
+    docker docker-compose docker-buildx docker-machine docker-ce \
+    kubectl kubeadm kubelet minikube ansible aws-cli \
+    bluez-utils pulseaudio-bluetooth
 
-paru -S --noconfirm mpd-mpris-bin ncmpcpp mpd nwg-displays nwg-look-bin zoxide hyprlock wlogout tldr newsboat \
-    xclip urlview bat yt-dlp alacritty
+paru -S --noconfirm mpd-mpris-bin ncmpcpp mpd nwg-look zoxide hyprlock wlogout tldr newsboat \
+    xclip urlview bat yt-dlp alacritty anyrun-git banana-cursor-bin clipse-bin
+
+echo "Pkg Install Completed!"
+
+echo "Changed Shell to ZSH"
+chsh -s /usr/bin/zsh
 
 echo -e "Copying config files...\n"
 
@@ -41,6 +49,7 @@ cp -R .config/qbittorrent ~/.config/
 cp -R tmux/.tmux-cht-command ~/tmux/
 cp -R .config/zathura ~/.config/
 cp -R .config/btop ~/.config/
+cp -R .config/anyrun ~/.config/
 cp -R tmux/.tmux-cht-languages ~/tmux/
 cp -R tmux/.tmux.conf ~/
 cp -R tmux/fshow.sh ~/tmux/
@@ -80,3 +89,4 @@ if [[ $HYP == "Y" || $HYP == "y" ]]; then
 else
     exit  
 fi
+

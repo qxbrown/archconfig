@@ -14,6 +14,11 @@ export PATH="$PATH:/home/papa/.local/share/bob/nvim-bin"
 source ~/.zsh-autopair/autopair.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 setopt autocd	
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+# Update PATH to include GOPATH and GOROOT binaries
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+
 
 # Aliases
 alias in='paru -S'
@@ -126,13 +131,15 @@ function git_branch_name()
   then
     :
   else
-    echo '-['$branch'] '
+    echo '[ '$branch' ]'
   fi
 }
 # Enable substitution in the prompt.
 setopt prompt_subst
 # Config for prompt. PS1 synonym.
-PS1='%~ $: $(git_branch_name)'
+# PS1='%~ $: $(git_branch_name)'
 
+#export PS1='%F{cyan}%n %F{magenta} %m%F{cyan} in %F{white}%F{cyan}❯%f '
+export PS1='%F{cyan}%n %F{magenta} %m%F{cyan} in %F{white}%F{cyan}❯%f %F{214}$(git_branch_name) %F{cyan}'
 
 source /home/$USER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
